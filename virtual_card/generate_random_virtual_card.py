@@ -26,13 +26,20 @@ def add_cvv_to_csv_file():
     row=[card_number,expiry_date,CVV]
     df = pandas.DataFrame([row])
     df.to_csv('virtual Cards.csv', mode='a',index=False, header=False)
-def start_programm():
+def read_input():
     virtual_cards_number=input("how many virtual cards do you want to be created ? \n")
-    try:
-        virtual_cards_number=int(virtual_cards_number)
-    except ValueError:
-        print("please entre an integer")
-    else:
-        for number in range(virtual_cards_number):
-            add_cvv_to_csv_file()
+    return virtual_cards_number
+def get_input():
+    wrong_input=True
+    while wrong_input:
+        try:
+            virtual_cards_number=int(read_input())
+        except ValueError:
+            print("please entre an integer")
+        else:
+            return virtual_cards_number
+def start_programm():
+            virtual_cards_number=get_input()
+            for number in range(virtual_cards_number):
+                add_cvv_to_csv_file()
 start_programm()
