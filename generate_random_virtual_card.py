@@ -1,3 +1,4 @@
+from pickle import FALSE
 import pandas,random
 def generate_card_number():
     card_number=""
@@ -25,7 +26,7 @@ def add_cvv_to_csv_file():
     CVV=generate_cvv()
     row=[card_number,expiry_date,CVV]
     df = pandas.DataFrame([row])
-    df.to_csv('virtual Cards.csv', mode='a',index=False, header=False)
+    df.to_csv('virtual_card/virtual_Cards.csv',mode='a',index=False,header=False)
 def read_input():
     virtual_cards_number=input("how many virtual cards do you want to be created ? \n")
     return virtual_cards_number
